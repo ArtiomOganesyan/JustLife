@@ -169,9 +169,11 @@ form.addEventListener("submit", (e) => {
     }, "");
 
   life.insertAdjacentHTML("afterbegin", days);
-  summary.innerText = `You have lived ${userDays} days out of ${totalDays} days. And you have ${
-    totalDays - userDays
-  } days left.`;
+  summary.innerText = `You have lived ${userDays} days out of ${totalDays} days. ${
+    totalDays - userDays <= 0
+      ? "Time is up."
+      : `And you have ${totalDays - userDays} days left.`
+  }`;
   document
     .getElementById("current_day")
     .scrollIntoView({ behavior: "smooth", block: "center" });
